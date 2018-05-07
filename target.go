@@ -31,7 +31,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ns3777k/go-shodan/shodan"
+	"https://github.com/ns3777k/go-shodan/tree/master/shodan"
 )
 
 type HistoryEntry struct {
@@ -49,10 +49,10 @@ type Target struct {
 	Info      *shodan.Host
 	History   map[string][]HistoryEntry
 
-	ctx *Context
+	ctx *Context `json:"-"`
 	//empijei: I suggest composing Context with a mutex and removing this
 	//instance variable see "Embedding" in "Effective Go"
-	lock sync.Mutex
+	lock sync.Mutex `json:"-"`
 }
 
 func NewTarget(address string, domain string) *Target {
